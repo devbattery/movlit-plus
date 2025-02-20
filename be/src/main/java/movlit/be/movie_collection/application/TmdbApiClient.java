@@ -1,4 +1,4 @@
-package movlit.be.movie_collect.application;
+package movlit.be.movie_collection.application;
 
 import java.nio.charset.StandardCharsets;
 import java.util.List;

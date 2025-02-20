@@ -1,13 +1,13 @@
-package movlit.be.movie_collect.application.service;
+package movlit.be.movie_collection.application.service;
 
 import java.util.ArrayList;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import movlit.be.movie_collect.infra.jpa.MovieCollectRepository;
 import movlit.be.movie.application.converter.main.MovieDocumentConverter;
 import movlit.be.movie.domain.document.MovieDocument;
 import movlit.be.movie.infra.persistence.es.MovieDocumentRepository;
+import movlit.be.movie_collection.infra.jpa.MovieCollectRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

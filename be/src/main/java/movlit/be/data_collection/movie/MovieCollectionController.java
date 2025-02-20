@@ -2,7 +2,7 @@ package movlit.be.data_collection.movie;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import movlit.be.movie_collect.application.service.MovieCollectionService;
+import movlit.be.movie_collection.application.service.MovieCollectionService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

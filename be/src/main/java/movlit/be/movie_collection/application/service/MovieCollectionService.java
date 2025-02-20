@@ -1,4 +1,4 @@
-package movlit.be.movie_collect.application.service;
+package movlit.be.movie_collection.application.service;
 
 import jakarta.transaction.Transactional;
 import java.time.LocalDate;
@@ -27,10 +27,10 @@ import movlit.be.movie.domain.entity.MovieTagEntity;
 import movlit.be.movie.domain.entity.MovieTagIdForEntity;
 import movlit.be.movie.infra.persistence.jpa.MovieCrewJpaRepository;
 import movlit.be.movie.infra.persistence.jpa.MovieRCrewJpaRepository;
-import movlit.be.movie_collect.application.TmdbApiClient;
-import movlit.be.movie_collect.infra.jpa.MovieCollectRepository;
-import movlit.be.movie_collect.infra.jpa.MovieGenreCollectRepository;
-import movlit.be.movie_collect.infra.jpa.MovieTagRepository;
+import movlit.be.movie_collection.application.TmdbApiClient;
+import movlit.be.movie_collection.infra.jpa.MovieCollectRepository;
+import movlit.be.movie_collection.infra.jpa.MovieGenreCollectRepository;
+import movlit.be.movie_collection.infra.jpa.MovieTagRepository;
 import movlit.be.movie_heart_count.application.service.MovieHeartCountService;
 import org.springframework.stereotype.Service;
 
