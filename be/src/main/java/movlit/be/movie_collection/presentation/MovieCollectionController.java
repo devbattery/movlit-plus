@@ -1,4 +1,4 @@
-package movlit.be.data_collection.movie;
+package movlit.be.movie_collection.presentation;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
