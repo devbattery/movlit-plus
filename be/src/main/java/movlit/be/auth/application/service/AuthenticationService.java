@@ -3,6 +3,7 @@ package movlit.be.auth.application.service;
 import java.util.Map;
 import java.util.Objects;
 import lombok.RequiredArgsConstructor;
+import movlit.be.common.exception.MemberNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -14,7 +15,6 @@ import movlit.be.auth.domain.repository.RefreshTokenStorage;
 import movlit.be.common.filter.dto.AuthenticationRequest;
 import movlit.be.common.filter.dto.AuthenticationResponse;
 import movlit.be.common.util.JwtTokenUtil;
-import movlit.be.auth.presentation.dto.RefreshTokenRequest;
 
 @Service
 @RequiredArgsConstructor
@@ -32,7 +32,7 @@ public class AuthenticationService {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
         } catch (BadCredentialsException e) {
-            throw new Exception("Incorrect email or password", e);
+            throw new MemberNotFoundException();
         }
 
         String accessToken = jwtTokenUtil.generateAccessToken(email);
@@ -46,6 +46,7 @@ public class AuthenticationService {
         if (!jwtTokenUtil.validateToken(refreshToken, email)) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid refresh Token");
         }
+
         String newAccessToken = jwtTokenUtil.generateAccessToken(email);
         return ResponseEntity.ok(new AuthenticationResponse(newAccessToken, refreshToken));
     }
@@ -62,6 +63,7 @@ public class AuthenticationService {
 
         refreshTokenStorage.saveRefreshToken(email, refreshToken);
         authCodeStorage.removeCode(code);
+
         return ResponseEntity.ok(new AuthenticationResponse(accessToken, refreshToken));
     }
 

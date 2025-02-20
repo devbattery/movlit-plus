@@ -33,7 +33,6 @@ public class SecurityConfig {
     @Value("${share.url}")
     private String url; // 배포 환경의 프론트엔드 URL
 
-    private final AuthenticationFailureHandler failureHandler;
     private final MyOAuth2MemberService myOAuth2MemberService;
     private final JwtRequestFilter jwtRequestFilter;
     private final OAuth2AuthenticationSuccessHandler oAuth2AuthenticationSuccessHandler;
@@ -43,7 +42,7 @@ public class SecurityConfig {
             throws Exception {
         http
                 .cors(Customizer.withDefaults())
-                .csrf(AbstractHttpConfigurer::disable)       // CSRF 방어 기능 비활성화
+                .csrf(AbstractHttpConfigurer::disable)
                 .headers(x -> x.frameOptions(FrameOptionsConfig::disable))     // H2-console
                 .authorizeHttpRequests(requests -> requests
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() // 추가

@@ -3,6 +3,8 @@ package movlit.be.auth.application.service;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Map;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import movlit.be.common.util.ids.MemberId;
 import movlit.be.member.domain.Member;
@@ -11,32 +13,29 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 
-// 스프링 시큐리티가 로그인 포스트 요청을 낚아채서 로그인을 진행시킴
-// 로컬 로그인 - MemberDetails 구현
-// 소셜 로그인 - OAuth2Member 구현
-
 @Slf4j
+@NoArgsConstructor
 public class MyMemberDetails implements UserDetails, OAuth2User {
 
     // 공통
+    @Getter
     private MemberId memberId;
 
     // 로컬 로그인
+    @Getter
     private Member member;
 
     // 소셜 로그인
     private Map<String, Object> attributes;
 
     public MyMemberDetails(Member member) {
-        this.member = member;
-        this.memberId = member.getMemberId();
+        this(member, Collections.emptyMap());
     }
 
     public MyMemberDetails(Member member, Map<String, Object> attributes) {
         this.member = member;
+        this.memberId = member.getMemberId();
         this.attributes = attributes;
-        log.info("[확인] member={}", member.toString());
-        log.info("[확인] attribute={}", attributes.toString());
     }
 
     @Override
@@ -46,30 +45,12 @@ public class MyMemberDetails implements UserDetails, OAuth2User {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singletonList(
-                new SimpleGrantedAuthority(member.getRole())
-        );
+        return Collections.singletonList(new SimpleGrantedAuthority(member.getRole()));
     }
 
     @Override
     public String getPassword() {
         return member.getMemberId().getValue();
-    }
-
-    public MemberId getMemberId() {
-        if (member != null) {
-            return member.getMemberId();
-        }
-
-        return null;
-    }
-
-    public Member getMember() {
-        if (member != null) {
-            return member;
-        }
-
-        return null;
     }
 
     @Override

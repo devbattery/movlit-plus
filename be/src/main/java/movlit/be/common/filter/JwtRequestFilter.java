@@ -28,10 +28,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws ServletException, IOException {
-
-        // TODO: Oauth2 로그인 시에만 header가 넘어오지 않음
-        final String authorizationHeader = request.getHeader("Authorization");
-
+        String authorizationHeader = request.getHeader("Authorization");
         String email = null;
         String jwt = null;
 
@@ -40,15 +37,11 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             try {
                 email = jwtTokenUtil.extractEmail(jwt);
             } catch (ExpiredJwtException e) {
-                // 토큰 만료 처리
-                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-                response.getWriter().write("Token Expired");
-                return; // 필터 체인 중단
+                setUnauthorizedResponse(response, "Token Expired");
+                return;
             } catch (Exception e) {
-                // 기타 토큰 관련 에러 처리 (잘못된 토큰, 서명 오류 등)
-                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-                response.getWriter().write("Invalid Token");
-                return; // 필터 체인 중단
+                setUnauthorizedResponse(response, "Invalid Token");
+                return;
             }
         }
 
@@ -57,26 +50,32 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
             try {
                 if (jwtTokenUtil.validateToken(jwt, memberDetails.getUsername())) {
-                    UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
-                            new UsernamePasswordAuthenticationToken(memberDetails, null,
-                                    memberDetails.getAuthorities());
-                    usernamePasswordAuthenticationToken
-                            .setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-                    SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
+                    UsernamePasswordAuthenticationToken token = makeToken(memberDetails);
+                    token.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                    SecurityContextHolder.getContext().setAuthentication(token);
                 } else {
-                    // 토큰이 유효하지 않은 경우 처리
-                    response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-                    response.getWriter().write("Invalid Token");
-                    return; // 필터 체인 중단
+                    setUnauthorizedResponse(response, "Invalid Token");
+                    return;
                 }
             } catch (ExpiredJwtException e) {
-                // 토큰 만료 처리
-                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-                response.getWriter().write("Token Expired");
-                return; // 필터 체인 중단
+                setUnauthorizedResponse(response, "Token Expired");
+                return;
             }
         }
         chain.doFilter(request, response);
+    }
+
+    private UsernamePasswordAuthenticationToken makeToken(UserDetails memberDetails) {
+        return new UsernamePasswordAuthenticationToken(
+                memberDetails,
+                null,
+                memberDetails.getAuthorities()
+        );
+    }
+
+    private void setUnauthorizedResponse(HttpServletResponse response, String message) throws IOException {
+        response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+        response.getWriter().write(message);
     }
 
 }
