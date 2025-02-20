@@ -106,5 +106,9 @@ public class MemberWriteService {
         authTokenService.revoke(accessToken);
     }
 
+    public void save(MemberEntity member) {
+        memberRepository.saveEntity(member);
+    }
+
 }
 

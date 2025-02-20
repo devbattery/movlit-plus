@@ -80,9 +80,12 @@ public enum ErrorMessage {
     // Follow
     FOLLOW_SELF_NOT_ALLOWED("자기 자신을 팔로우할 수 없습니다.", "f001"),
     FOLLOW_ALREADY_MEMBER("이미 팔로우한 사용자입니다.", "f002"),
-
     FOLLOW_NOT_FOUND("팔로우 관계가 존재하지 않습니다.", "f003"),
 
+    // Image
+    IMAGE_UPLOAD_EXCEPTION("S3에 업로드 실패하였습니다.", "i001"),
+
+    // Notification
     NOTIFICATION_NOT_FOUND("알림이 없습니다.", "n001");
 
     private final String message;
