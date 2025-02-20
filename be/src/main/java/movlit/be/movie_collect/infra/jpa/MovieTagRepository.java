@@ -1,4 +1,4 @@
-package movlit.be.data_collection.movie.jpa;
+package movlit.be.movie_collect.infra.jpa;
 
 import movlit.be.movie.domain.entity.MovieTagEntity;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,4 +1,4 @@
-package movlit.be.data_collection;
+package movlit.be.movie_collect.infra.jpa;
 
 import movlit.be.movie.domain.entity.MovieGenreEntity;
 import movlit.be.movie.domain.entity.MovieGenreIdForEntity;
