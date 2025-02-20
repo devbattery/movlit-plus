@@ -1,11 +1,13 @@
 package movlit.be.common.filter;
 
 import io.jsonwebtoken.ExpiredJwtException;
+import io.micrometer.common.lang.NonNullApi;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import movlit.be.auth.application.service.MyMemberDetailsService;
@@ -28,49 +30,77 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws ServletException, IOException {
-        String authorizationHeader = request.getHeader("Authorization");
-        String email = null;
-        String jwt = null;
 
-        if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
-            jwt = authorizationHeader.substring(7);
-            try {
-                email = jwtTokenUtil.extractEmail(jwt);
-            } catch (ExpiredJwtException e) {
-                setUnauthorizedResponse(response, "Token Expired");
-                return;
-            } catch (Exception e) {
-                setUnauthorizedResponse(response, "Invalid Token");
+        Optional<String> jwtOptional = extractJwtFromHeader(request);
+
+        if (jwtOptional.isPresent()) {
+            String jwt = jwtOptional.get();
+            Optional<String> emailOptional = extractEmail(jwt, response);
+
+            if (emailOptional.isEmpty()) {
                 return;
             }
-        }
 
-        if (email != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            UserDetails memberDetails = this.myMemberDetailsService.loadUserByUsername(email);
+            String email = emailOptional.get();
 
-            try {
-                if (jwtTokenUtil.validateToken(jwt, memberDetails.getUsername())) {
-                    UsernamePasswordAuthenticationToken token = makeToken(memberDetails);
-                    token.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-                    SecurityContextHolder.getContext().setAuthentication(token);
-                } else {
-                    setUnauthorizedResponse(response, "Invalid Token");
+            if (SecurityContextHolder.getContext().getAuthentication() == null) {
+                UserDetails userDetails = myMemberDetailsService.loadUserByUsername(email);
+                if (!authenticateUser(userDetails, jwt, request, response)) {
                     return;
                 }
-            } catch (ExpiredJwtException e) {
-                setUnauthorizedResponse(response, "Token Expired");
-                return;
             }
         }
+
         chain.doFilter(request, response);
     }
 
-    private UsernamePasswordAuthenticationToken makeToken(UserDetails memberDetails) {
-        return new UsernamePasswordAuthenticationToken(
-                memberDetails,
+    private Optional<String> extractJwtFromHeader(HttpServletRequest request) {
+        String authorizationHeader = request.getHeader("Authorization");
+        if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
+            return Optional.of(authorizationHeader.substring(7));
+        }
+
+        return Optional.empty();
+    }
+
+    private Optional<String> extractEmail(String jwt, HttpServletResponse response) throws IOException {
+        try {
+            return Optional.ofNullable(jwtTokenUtil.extractEmail(jwt));
+        } catch (ExpiredJwtException e) {
+            setUnauthorizedResponse(response, "Token Expired");
+        } catch (Exception e) {
+            setUnauthorizedResponse(response, "Invalid Token");
+        }
+
+        return Optional.empty();
+    }
+
+    private boolean authenticateUser(UserDetails userDetails, String jwt,
+                                     HttpServletRequest request, HttpServletResponse response) throws IOException {
+        try {
+            if (jwtTokenUtil.validateToken(jwt, userDetails.getUsername())) {
+                UsernamePasswordAuthenticationToken token = createAuthenticationToken(userDetails, request);
+                SecurityContextHolder.getContext().setAuthentication(token);
+                return true;
+            } else {
+                setUnauthorizedResponse(response, "Invalid Token");
+                return false;
+            }
+        } catch (ExpiredJwtException e) {
+            setUnauthorizedResponse(response, "Token Expired");
+            return false;
+        }
+    }
+
+    private UsernamePasswordAuthenticationToken createAuthenticationToken(UserDetails userDetails,
+                                                                          HttpServletRequest request) {
+        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
+                userDetails,
                 null,
-                memberDetails.getAuthorities()
+                userDetails.getAuthorities()
         );
+        token.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+        return token;
     }
 
     private void setUnauthorizedResponse(HttpServletResponse response, String message) throws IOException {
