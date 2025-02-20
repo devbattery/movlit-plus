@@ -91,7 +91,7 @@ public class MemberWriteService {
 
     public AuthTokenIssueResponse login(MemberLoginRequest request) {
         // TODO: usecase를 안 쓰니 write 서비스에서 read 서비스를 참조하는 일이 생김
-        Member member = memberReadService.findByMemberEmail(request.getEmail());
+        Member member = memberReadService.fetchMemberByEmail(request.getEmail());
         checkPasswordMatch(request, member);
         return authTokenService.issue(member.getEmail());
     }

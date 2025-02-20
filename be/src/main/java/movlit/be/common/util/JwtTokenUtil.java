@@ -74,7 +74,6 @@ public class JwtTokenUtil {
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + time))
                 .signWith(SignatureAlgorithm.HS256, secret)
-                //.signWith(secret, SignatureAlgorithm.HS512)
                 .compact();
     }
 

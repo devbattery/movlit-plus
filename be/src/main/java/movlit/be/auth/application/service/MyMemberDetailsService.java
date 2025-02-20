@@ -18,14 +18,7 @@ public class MyMemberDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Member member = memberService.findByMemberEmail(email);
-
-        if (member == null) {
-            log.warn("Login 실패: 아이디를 찾을 수 없습니다. (email: " + email + ")");
-            throw new UsernameNotFoundException("사용자를 찾을 수 없습니다: " + email);
-        }
-
-        //log.info("Login 시도 memberId: " + member);
+        Member member = memberService.fetchMemberByEmail(email);
         return new MyMemberDetails(member);
     }
 

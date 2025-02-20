@@ -27,32 +27,27 @@ public class MyOAuth2MemberService extends DefaultOAuth2UserService {
     @Override
     public OAuth2User loadUser(OAuth2UserRequest memberRequest) {
         OAuth2User oAuth2User = super.loadUser(memberRequest);
-        log.info("===getAttributes()===: " + oAuth2User.getAttributes());
-
         String provider = memberRequest.getClientRegistration().getRegistrationId();
         OAuth2UserInfo oAuth2UserInfo = getOAuth2UserInfo(provider, oAuth2User.getAttributes());
 
         String email = oAuth2UserInfo.getEmail();
-        String profileUrl = oAuth2UserInfo.getProfileImageUrl();
-        String dob = oAuth2UserInfo.getDob();
-        String hashedPwd = bCryptPasswordEncoder.encode("Social Login"); // 공통 로직
 
         Member member;
         try {
-            member = memberReadService.findByMemberEmail(email);
-            log.info("=== findByMemberEmail : {}", member);
+            member = memberReadService.fetchMemberByEmail(email);
         } catch (MemberNotFoundException e) {
-            MemberRegisterOAuth2Request request = MemberRegisterOAuth2Request.builder()
-                    .email(email)
-                    .password(hashedPwd)
-                    .profileImgUrl(profileUrl)
-                    .dob(dob)
-                    .build();
+            MemberRegisterOAuth2Request request = makeRequest(email, oAuth2UserInfo);
             member = memberWriteService.registerOAuth2Member(request);
-            log.info("{} 계정을 통해 회원가입이 되었습니다. {}", provider.toUpperCase(), request.getEmail());
         }
 
-        return new MyMemberDetails(member, oAuth2User.getAttributes()); // OAuth2AuthenticationToken 자동 생성
+        return new MyMemberDetails(member, oAuth2User.getAttributes());
+    }
+
+    private MemberRegisterOAuth2Request makeRequest(String email, OAuth2UserInfo oAuth2UserInfo) {
+        String profileUrl = oAuth2UserInfo.getProfileImageUrl();
+        String dob = oAuth2UserInfo.getDob();
+        String hashedPwd = bCryptPasswordEncoder.encode("Social Login");
+        return new MemberRegisterOAuth2Request(email, hashedPwd, profileUrl, dob);
     }
 
     private OAuth2UserInfo getOAuth2UserInfo(String provider, Map<String, Object> attributes) {

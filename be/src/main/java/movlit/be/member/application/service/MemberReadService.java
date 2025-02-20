@@ -25,7 +25,7 @@ public class MemberReadService {
     private final EntityManager entityManager;
 
     @Transactional(readOnly = true)
-    public Member findByMemberEmail(String email) {
+    public Member fetchMemberByEmail(String email) {
         return memberRepository.fetchByEmail(email);
     }
 

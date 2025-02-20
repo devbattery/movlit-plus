@@ -35,7 +35,7 @@ public class OneononeChatroomTest extends AcceptanceTest {
         String senderAccessToken = 회원_윤기_액세스토큰;
 
         String receiverAccessToken = 회원_원준_액세스토큰;
-        MemberId receiverId = memberReadService.findByMemberEmail(jwtTokenUtil.extractEmail(receiverAccessToken))
+        MemberId receiverId = memberReadService.fetchMemberByEmail(jwtTokenUtil.extractEmail(receiverAccessToken))
                 .getMemberId();
         Map<String, Object> request = new HashMap<>();
         request.put("receiverId", receiverId.getValue());
@@ -56,7 +56,7 @@ public class OneononeChatroomTest extends AcceptanceTest {
         String senderAccessToken = 회원_윤기_액세스토큰;
 
         String receiverAccessToken = 회원_원준_액세스토큰;
-        MemberId receiverId = memberReadService.findByMemberEmail(jwtTokenUtil.extractEmail(receiverAccessToken))
+        MemberId receiverId = memberReadService.fetchMemberByEmail(jwtTokenUtil.extractEmail(receiverAccessToken))
                 .getMemberId();
         Map<String, Object> request = new HashMap<>();
         request.put("receiverId", receiverId.getValue());
@@ -79,13 +79,13 @@ public class OneononeChatroomTest extends AcceptanceTest {
         String senderAccessToken = 회원_윤기_액세스토큰;
 
         // 채팅1
-        MemberId receiverId = memberReadService.findByMemberEmail(jwtTokenUtil.extractEmail(회원_원준_액세스토큰))
+        MemberId receiverId = memberReadService.fetchMemberByEmail(jwtTokenUtil.extractEmail(회원_원준_액세스토큰))
                 .getMemberId();
         request.put("receiverId", receiverId.getValue());
         일대일_채팅을_생성한다(senderAccessToken, request, spec);
 
         // 채팅2
-        receiverId = memberReadService.findByMemberEmail(jwtTokenUtil.extractEmail(회원_민지_액세스토큰))
+        receiverId = memberReadService.fetchMemberByEmail(jwtTokenUtil.extractEmail(회원_민지_액세스토큰))
                 .getMemberId();
         request.replace("receiverId", receiverId.getValue());
         일대일_채팅을_생성한다(senderAccessToken, request, spec);

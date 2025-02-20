@@ -1,9 +1,10 @@
 package movlit.be.member.presentation.dto.request;
 
-import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
+@NoArgsConstructor
 public class MemberRegisterOAuth2Request {
 
     private String email;
@@ -11,9 +12,7 @@ public class MemberRegisterOAuth2Request {
     private String dob;
     private String profileImgUrl;
 
-    @Builder
-    public MemberRegisterOAuth2Request(String email, String password,
-                                       String dob, String profileImgUrl) {
+    public MemberRegisterOAuth2Request(String email, String password, String dob, String profileImgUrl) {
         this.email = email;
         this.password = password;
         this.dob = dob;
