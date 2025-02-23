@@ -33,8 +33,6 @@ public class ImageService {
     private String folderName;
 
     public ImageResponse uploadProfileImage(MemberId memberId, MultipartFile file) {
-        log.info("Starting uploadProfileImage for member: {}", memberId);
-
         // 1. 기존 이미지가 있다면 삭제
         deleteExistingProfileImageIfPresent(memberId);
 
@@ -42,7 +40,6 @@ public class ImageService {
         String imageUrl = s3Service.uploadImage(file, folderName);
         ImageEntity imageEntity = ImageConverter.toImageEntity(imageUrl, memberId);
         ImageEntity savedImageEntity = imageRepository.upload(imageEntity);
-        log.info("Image uploaded and saved with id: {}", savedImageEntity.getImageId());
 
         // 3. 회원 프로필 이미지 URL 업데이트
         updateMemberProfileImageUrl(memberId, savedImageEntity.getUrl());

@@ -22,13 +22,13 @@ public class MovieCommentLikeCountRepositoryImpl implements MovieCommentLikeCoun
     }
 
     @Override
-    public void incrementMovieHeartCount(MovieCommentId movieCommentId) {
-        movieCommentLikeCountJpaRepository.incrementMovieHeartCount(movieCommentId);
+    public void incrementMovieCommentLikeCount(MovieCommentId movieCommentId) {
+        movieCommentLikeCountJpaRepository.incrementMovieCommentLikeCount(movieCommentId);
     }
 
     @Override
-    public void decrementMovieHeartCount(MovieCommentId movieCommentId) {
-        movieCommentLikeCountJpaRepository.decrementMovieHeartCount(movieCommentId);
+    public void decrementMovieCommentLikeCount(MovieCommentId movieCommentId) {
+        movieCommentLikeCountJpaRepository.decrementMovieCommentLikeCount(movieCommentId);
     }
 
     @Override

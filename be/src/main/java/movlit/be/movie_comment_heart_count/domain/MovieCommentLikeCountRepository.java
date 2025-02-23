@@ -9,9 +9,9 @@ public interface MovieCommentLikeCountRepository {
 
     MovieCommentLikeCountEntity save(MovieCommentLikeCountEntity movieHeartCountEntity);
 
-    void incrementMovieHeartCount(MovieCommentId movieCommentId);
+    void incrementMovieCommentLikeCount(MovieCommentId movieCommentId);
 
-    void decrementMovieHeartCount(MovieCommentId movieCommentId);
+    void decrementMovieCommentLikeCount(MovieCommentId movieCommentId);
 
     MovieCommentLikeResponse fetchMovieCommentLikeResponse(MovieCommentLikeId movieCommentLikeId);
 

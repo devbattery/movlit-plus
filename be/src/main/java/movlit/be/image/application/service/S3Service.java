@@ -50,6 +50,7 @@ public class S3Service {
         if (originalFilename == null) {
             return "unknown";
         }
+
         // 알파벳, 숫자, 점(.), 대시(-), 언더스코어(_)만 허용
         return originalFilename.replaceAll("[^a-zA-Z0-9\\.\\-_]", "");
     }

@@ -19,11 +19,11 @@ public class MovieCommentLikeCountWriteService {
     }
 
     public void incrementMovieCommentLikeCount(MovieCommentId movieCommentId) {
-        movieCommentLikeCountRepository.incrementMovieHeartCount(movieCommentId);
+        movieCommentLikeCountRepository.incrementMovieCommentLikeCount(movieCommentId);
     }
 
     public void decrementMovieCommentLikeCount(MovieCommentId movieCommentId) {
-        movieCommentLikeCountRepository.decrementMovieHeartCount(movieCommentId);
+        movieCommentLikeCountRepository.decrementMovieCommentLikeCount(movieCommentId);
     }
 
 }

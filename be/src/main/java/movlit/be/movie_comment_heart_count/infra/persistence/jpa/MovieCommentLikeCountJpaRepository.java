@@ -18,13 +18,13 @@ public interface MovieCommentLikeCountJpaRepository extends
     @Query("UPDATE MovieCommentLikeCountEntity mclc "
             + "SET mclc.count = mclc.count + 1 "
             + "WHERE mclc.movieCommentId = :movieCommentId")
-    void incrementMovieHeartCount(MovieCommentId movieCommentId);
+    void incrementMovieCommentLikeCount(MovieCommentId movieCommentId);
 
     @Modifying
     @Query("UPDATE MovieCommentLikeCountEntity mclc "
             + "SET mclc.count = mclc.count - 1 "
             + "WHERE mclc.movieCommentId = :movieCommentId")
-    void decrementMovieHeartCount(MovieCommentId movieCommentId);
+    void decrementMovieCommentLikeCount(MovieCommentId movieCommentId);
 
     @Query("SELECT NEW movlit.be.movie_comment_heart.presentation.dto.response.MovieCommentLikeResponse("
             + "mcl.movieCommentLikeId, mcl.movieCommentId, mcl.memberId, mcl.isLiked, mclc.count) "
