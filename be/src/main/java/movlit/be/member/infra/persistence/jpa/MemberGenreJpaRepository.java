@@ -6,12 +6,8 @@ import movlit.be.common.util.ids.MemberId;
 import movlit.be.member.domain.entity.MemberGenreEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
 public interface MemberGenreJpaRepository extends JpaRepository<MemberGenreEntity, MemberGenreId> {
-
-    @Query("SELECT mg.genreId FROM MemberGenreEntity mg WHERE mg.memberId = :memberId")
-    List<Long> findGenreIdsByMemberId(@Param("memberId") MemberId memberId);
 
     @Query("SELECT mg "
             + "FROM MemberGenreEntity mg "

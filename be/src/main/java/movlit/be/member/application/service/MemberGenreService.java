@@ -17,13 +17,12 @@ public class MemberGenreService {
 
     @Transactional(readOnly = true)
     public List<Genre> fetchUserInterestGenreList(MemberId memberId) {
-        List<Genre> genres = memberGenreRepository.findUserInterestGenreList(memberId);
-        return genres;
+        return memberGenreRepository.fetchMemberInterestGenreList(memberId);
     }
 
     @Transactional(readOnly = true)
     public List<Genre> fetchMemberInterestGenre(MemberId memberId) {
-        List<Genre> movieGenreList = memberGenreRepository.findUserInterestGenreList(memberId);
+        List<Genre> movieGenreList = memberGenreRepository.fetchMemberInterestGenreList(memberId);
         if (movieGenreList.isEmpty()) {
             throw new MemberGenreNotFoundException();
         }

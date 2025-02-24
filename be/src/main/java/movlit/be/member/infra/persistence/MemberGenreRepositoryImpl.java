@@ -17,24 +17,16 @@ public class MemberGenreRepositoryImpl implements MemberGenreRepository {
     private final MemberGenreJpaRepository memberGenreJpaRepository;
 
     @Override
-    public List<Long> findGenreIdsByMemberId(MemberId memberId) {
-        List<Long> genresByMemberId = memberGenreJpaRepository.findGenreIdsByMemberId(memberId);
-
-        if (genresByMemberId.isEmpty()) {
-            throw new MemberGenreNotFoundException();
-        }
-        return genresByMemberId;
-    }
-
-    @Override
-    public List<Genre> findUserInterestGenreList(MemberId memberId) {
+    public List<Genre> fetchMemberInterestGenreList(MemberId memberId) {
         List<MemberGenreEntity> memberGenreEntityList = memberGenreJpaRepository.findAllByMemberId(memberId);
 
         if (memberGenreEntityList.isEmpty()) {
             throw new MemberGenreNotFoundException();
         }
 
-        return memberGenreEntityList.stream().map(x -> Genre.of(x.getGenreId())).toList();
+        return memberGenreEntityList.stream()
+                .map(x -> Genre.of(x.getGenreId()))
+                .toList();
     }
 
 }
