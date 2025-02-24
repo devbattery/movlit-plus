@@ -29,12 +29,14 @@ public class MovieSearchController {
     public ResponseEntity<MovieListResponseDto> fetchMovieByMemberInterestGenre(
             @AuthenticationPrincipal MyMemberDetails details,
             @RequestParam(required = false, defaultValue = "1") int page,
-            @RequestParam(required = false, defaultValue = "10") int pageSize) {
-
+            @RequestParam(required = false, defaultValue = "10") int pageSize
+    ) {
         MemberId currentMemberId = details.getMemberId();
-        MovieListResponseDto response = movieSearchService.searchMovieByMemberInterestGenre(currentMemberId, page,
-                pageSize);
-
+        var response = movieSearchService.searchMovieByMemberInterestGenre(
+                currentMemberId,
+                page,
+                pageSize
+        );
         return ResponseEntity.ok(response);
     }
 
@@ -48,8 +50,10 @@ public class MovieSearchController {
             @RequestParam(required = false, defaultValue = "20") int pageSize
     ) {
         MemberId currentMemberId = details.getMemberId();
-        MovieListResponseDto response = movieSearchService.fetchMovieByMemberRecentHeart(currentMemberId, page,
-                pageSize);
+        var response = movieSearchService.fetchMovieByMemberRecentHeart(currentMemberId,
+                page,
+                pageSize
+        );
 
         return ResponseEntity.ok(response);
     }

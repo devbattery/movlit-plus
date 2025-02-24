@@ -27,7 +27,6 @@ public class MovieSearchService {
 
     private final MemberGenreService memberGenreService;
     private final MovieHeartService movieHeartService;
-    private final MovieReadService movieReadService;
     private final MovieCrewReadService movieCrewReadService;
     private final MovieSearchRepository movieSearchRepository;
 
