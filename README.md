@@ -447,14 +447,12 @@
 |                    | GitHub Actions       | CI/CD 파이프라인 구축: 코드 변경 감지, 자동 빌드, 테스트, 배포 자동화                         |
 |                    | AWS                  | 클라우드 배포 환경: EC2(서버), RDS(MySQL), ELB(로드밸런싱), Route 53(DNS), ACM(SSL) |
 
-## 🧑‍🤝‍🧑 멤버 (Team Members)
+## 🧑‍🤝‍🧑 멤버
 
-| 역할 | GitHub 프로필                                                                                                                                                                                                   | 이름  |
-|:---|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----|
-| 팀장 | <a href="https://github.com/devbattery"><img src = "https://avatars.githubusercontent.com/devbattery" width="100px;" alt="정원준 프로필"></a> <br> [devbattery](https://github.com/devbattery)                     | 정원준 |
-| 팀원 | <a href="https://github.com/minyoongi96"><img src = "https://avatars.githubusercontent.com/minyoongi96" width="100px;" alt="민윤기 프로필"></a> <br> [minyoongi96](https://github.com/minyoongi96)                 | 민윤기 |
-| 팀원 | <a href="https://github.com/G1Huh"><img src = "https://avatars.githubusercontent.com/G1Huh" width="100px;" alt="허지원 프로필"></a> <br> [G1Huh](https://github.com/G1Huh)                                         | 허지원 |
-| 팀원 | <a href="https://github.com/minjikimkim2222"><img src = "https://avatars.githubusercontent.com/minjikimkim2222" width="100px;" alt="김민지 프로필"></a> <br> [minjikimkim2222](https://github.com/minjikimkim2222) | 김민지 |
+| 팀장                                                                                                                    | 팀원                                                                                                                      | 팀원                                                                                                          | 팀원                                                                                                                              |
+|-----------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| <a href="https://github.com/devbattery"><img src = "https://avatars.githubusercontent.com/devbattery" width="120px;"> | <a href="https://github.com/minyoongi96"><img src = "https://avatars.githubusercontent.com/minyoongi96" width="120px;"> | <a href="https://github.com/G1Huh"><img src = "https://avatars.githubusercontent.com/G1Huh" width="120px;"> | <a href="https://github.com/minjikimkim2222"><img src = "https://avatars.githubusercontent.com/minjikimkim2222" width="120px;"> |
+| [정원준](https://github.com/devbattery)                                                                                  | [민윤기](https://github.com/minyoongi96)                                                                                   | [허지원](https://github.com/G1Huh)                                                                             | [김민지](https://github.com/minjikimkim2222)                                                                                       |
 
 ## 📉 ERD (Entity-Relationship Diagram)
 
