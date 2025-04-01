@@ -2,8 +2,6 @@
 
 ## 🕸️ 시스템 아키텍처
 
-* 아래는 MovLit 서비스의 주요 구성 요소와 데이터 흐름을 보여주는 시스템 아키텍처 다이어그램입니다.
-
 <img src="https://github.com/user-attachments/assets/96b372dd-52ee-4481-96d1-fba414443c4a" alt="MovLit System Architecture Diagram">
 
 ## 📄 프로젝트 개요
@@ -22,6 +20,7 @@
 <summary><h3>✅ API 문서화 (Spring REST Docs & Rest Assured)</h3></summary>
 
 - Rest Assured를 이용한 API 테스트 코드 작성을 기반으로 Spring REST Docs와 연동하여 API 문서를 자동화했습니다.
+
   <img src="https://github.com/user-attachments/assets/8577372b-633b-4e48-bda3-54d269e5a6cb" style="width: 600px" alt="API Documentation Example">
 
 </details>
@@ -30,14 +29,21 @@
 <summary><h3>👤 회원 관리 (가입, 일반 로그인, OAuth2 로그인)</h3></summary>
 
 - **회원가입:** 이메일, 비밀번호, 닉네임 기반의 자체 회원가입 기능을 제공합니다.
+
   <img src="https://github.com/user-attachments/assets/82e9f940-3f51-43bb-bef0-bf4246dbbb7a" style="width: 600px" alt="Signup Form">
 
 <hr/>
--   **로그인:** 자체 계정 또는 소셜 계정(OAuth2)을 통한 로그인을 지원합니다.
-<img src="https://github.com/user-attachments/assets/4935e3f9-1f4f-40af-95a9-4fe5a8b272da" style="width: 600px" alt="Login Form">
+
+- **로그인:** 자체 계정 또는 소셜 계정(OAuth2)을 통한 로그인을 지원합니다.
+
+  <img src="https://github.com/user-attachments/assets/4935e3f9-1f4f-40af-95a9-4fe5a8b272da" style="width: 600px" alt="Login Form">
+
 <hr/>
--   **OAuth2 로그인:** Google, Kakao 등 소셜 로그인을 지원하여 사용자 편의성을 높였습니다.
-<img src="https://github.com/user-attachments/assets/34d361fb-f748-4d2e-850f-7a76dc0a4153" style="width: 600px" alt="OAuth2 Login Example">
+
+- **OAuth2 로그인:** Google, Kakao 등 소셜 로그인을 지원하여 사용자 편의성을 높였습니다.
+
+  <img src="https://github.com/user-attachments/assets/34d361fb-f748-4d2e-850f-7a76dc0a4153" style="width: 600px" alt="OAuth2 Login Example">
+
 </details>
 
 <details>
@@ -45,11 +51,15 @@
 
 - 사용자의 선호도와 최신 트렌드를 반영하여 영화 및 도서 콘텐츠 목록을 카테고리별로 제공합니다.
 - **메인 화면 (영화):**
+
   <img src="https://github.com/user-attachments/assets/c86c38e8-4812-427e-950f-42fdb85cdd11" style="width: 600px" alt="Main Screen - Movies">
 
 <hr/>
--   **메인 화면 (도서):**
-<img src="https://github.com/user-attachments/assets/99e01ff5-b105-4c0b-98cd-224ee0070b02" style="width: 600px" alt="Main Screen - Books">
+
+- **메인 화면 (도서):**
+
+  <img src="https://github.com/user-attachments/assets/99e01ff5-b105-4c0b-98cd-224ee0070b02" style="width: 600px" alt="Main Screen - Books">
+
 </details>
 
 <details>
@@ -57,23 +67,34 @@
 
 - **콘텐츠 상세 정보:** 각 영화/도서의 상세 정보, 사용자 평점 및 코멘트, 관련 콘텐츠(다른 책/영화) 목록을 제공합니다.
 - **도서 상세 정보:**
+
   <img src="https://github.com/user-attachments/assets/a9a6668b-0632-4445-b92f-703b880e30e1" style="width: 600px" alt="Book Detail Screen">
 
 <hr/>
--   **평점 및 코멘트:** 사용자는 콘텐츠에 대한 평점과 코멘트를 남기고 조회할 수 있습니다.
-<img src="https://github.com/user-attachments/assets/93140632-99de-4166-b4ef-384bfa25bb73" style="width: 600px" alt="Rating and Comments Form (Book)">
+
+- **평점 및 코멘트:** 사용자는 콘텐츠에 대한 평점과 코멘트를 남기고 조회할 수 있습니다.
+
+  <img src="https://github.com/user-attachments/assets/93140632-99de-4166-b4ef-384bfa25bb73" style="width: 600px" alt="Rating and Comments Form (Book)">
+
 <hr/>
--   **영화 상세 정보:**
-<img src="https://github.com/user-attachments/assets/9ac75e7f-9782-46cd-a63b-8cf710e015a1" style="width: 600px" alt="Movie Detail Screen">
+
+- **영화 상세 정보:**
+
+  <img src="https://github.com/user-attachments/assets/9ac75e7f-9782-46cd-a63b-8cf710e015a1" style="width: 600px" alt="Movie Detail Screen">
+
 <hr/>
--   **평점 및 코멘트:**
-<img src="https://github.com/user-attachments/assets/79539d4b-16ed-473a-aeae-4dc15e737690" style="width: 600px" alt="Rating and Comments Form (Movie)">
+
+- **평점 및 코멘트:**
+
+  <img src="https://github.com/user-attachments/assets/79539d4b-16ed-473a-aeae-4dc15e737690" style="width: 600px" alt="Rating and Comments Form (Movie)">
+
 </details>
 
 <details>
 <summary><h3>🔍 통합 검색 - 다양한 조건 검색 및 유사 콘텐츠 제공</h3></summary>
 
 - 콘텐츠의 제목, 장르, 카테고리, 배우/작가, 감독/출판사 등 다양한 기준으로 통합 검색 기능을 제공하며, 검색 결과와 함께 유사한 콘텐츠를 추천합니다.
+
   <img src="https://github.com/user-attachments/assets/2e66d8b0-9f04-4ecb-bdb7-ffe42a01bcfa" style="width:600px" alt="Integrated Search Results">
 
 </details>
@@ -83,6 +104,7 @@
 
 - 사용자는 다른 사용자를 팔로우/언팔로우하고, 자신의 프로필 정보(닉네임, 프로필 사진 등)를 수정할 수 있습니다.
 - 사용자의 활동(찜 목록, 평점 등)을 기반으로 맞춤형 콘텐츠를 추천받을 수 있습니다.
+
   <img src="https://github.com/user-attachments/assets/8f440bfd-d64c-4e43-8329-5502c0b0b062" style="width:600px" alt="User Profile Page">
 
 </details>
@@ -91,31 +113,48 @@
 <summary><h3>💬 1:1 채팅 (DM) - 사용자 간 실시간 다이렉트 메시지</h3></summary>
 
 - **채팅방 생성:** 다른 사용자의 프로필 페이지에서 DM 보내기 버튼을 통해 1:1 채팅방을 생성하고 메시지를 전송할 수 있습니다.
+
   <img src="https://github.com/user-attachments/assets/b3c1e0c9-b985-4b24-af52-5c1cde01ae55" style="width:600px" alt="Starting a 1:1 Chat">
 
 <hr/>
--   **실시간 프로필 업데이트:** 채팅 중 상대방의 프로필 사진이 변경되면 실시간으로 채팅방에 반영됩니다.
-<img src="https://github.com/user-attachments/assets/7cd08d50-8ec1-4f38-88dc-35eb4c67bdf7" style="width:600px" alt="Real-time Profile Update in Chat">
+
+- **실시간 프로필 업데이트:** 채팅 중 상대방의 프로필 사진이 변경되면 실시간으로 채팅방에 반영됩니다.
+
+  <img src="https://github.com/user-attachments/assets/7cd08d50-8ec1-4f38-88dc-35eb4c67bdf7" style="width:600px" alt="Real-time Profile Update in Chat">
+
 <hr/>
--   **새 메시지 알림:** 1:1 채팅 메시지를 받으면 실시간 알림(SSE)을 통해 사용자에게 알려줍니다.
-<img src="https://github.com/user-attachments/assets/505fea8c-7cbd-4eac-b7e1-a35a73763797" style="width:600px" alt="1:1 Chat Notification">
+
+- **새 메시지 알림:** 1:1 채팅 메시지를 받으면 실시간 알림(SSE)을 통해 사용자에게 알려줍니다.
+
+  <img src="https://github.com/user-attachments/assets/505fea8c-7cbd-4eac-b7e1-a35a73763797" style="width:600px" alt="1:1 Chat Notification">
+
 </details>
 
 <details>
 <summary><h3>👥 그룹 채팅 - 콘텐츠 기반 그룹 채팅 및 실시간 교류</h3></summary>
 
 - **채팅방 검색 및 생성/참여:** 특정 영화나 책에 대한 그룹 채팅방을 검색하여 참여하거나, 없는 경우 직접 생성할 수 있습니다.
+
   <img src="https://github.com/user-attachments/assets/f24799ba-e133-4824-9858-7fa50ed64abd" style="width:600px" alt="Group Chat Search and Creation">
 
 <hr/>
--   **실시간 그룹 채팅:** WebSocket을 통해 그룹 채팅방 내 사용자들과 실시간으로 의견을 교환할 수 있습니다.
-<img src="https://github.com/user-attachments/assets/48cbec83-32e2-480d-88d7-71ef0cf99c47" style="width:600px" alt="Real-time Group Chat">
+
+- **실시간 그룹 채팅:** WebSocket을 통해 그룹 채팅방 내 사용자들과 실시간으로 의견을 교환할 수 있습니다.
+
+  <img src="https://github.com/user-attachments/assets/48cbec83-32e2-480d-88d7-71ef0cf99c47" style="width:600px" alt="Real-time Group Chat">
+
 <hr/>
--   **실시간 프로필 업데이트:** 그룹 채팅 중 사용자의 프로필 정보(사진, 닉네임)가 변경되면 실시간으로 반영됩니다.
-<img src="https://github.com/user-attachments/assets/65d61216-23da-4f51-952e-437f7cbf5adb" style="width:600px" alt="Real-time Profile Update in Group Chat">
+
+- **실시간 프로필 업데이트:** 그룹 채팅 중 사용자의 프로필 정보(사진, 닉네임)가 변경되면 실시간으로 반영됩니다.
+
+  <img src="https://github.com/user-attachments/assets/65d61216-23da-4f51-952e-437f7cbf5adb" style="width:600px" alt="Real-time Profile Update in Group Chat">
+
 <hr/>
--   **채팅방 나가기:** 참여 중인 그룹 채팅방에서 나갈 수 있습니다.
-<img src="https://github.com/user-attachments/assets/62f28b53-feb7-4f45-81fa-6bbc37848107" style="width:600px" alt="Leaving Group Chat">
+
+- **채팅방 나가기:** 참여 중인 그룹 채팅방에서 나갈 수 있습니다.
+
+  <img src="https://github.com/user-attachments/assets/62f28b53-feb7-4f45-81fa-6bbc37848107" style="width:600px" alt="Leaving Group Chat">
+
 </details>
 
 <details>
@@ -123,6 +162,7 @@
 
 - SSE(Server-Sent Events)를 활용하여 팔로우, 찜한 콘텐츠의 그룹챗 생성, 새 메시지(1:1, 그룹) 수신 등 주요 이벤트 발생 시 사용자에게 실시간 알림을 제공합니다 (브라우저 알림 및 페이지
   내 알림 목록).
+
   <img src="https://github.com/user-attachments/assets/cb18199a-8ed0-49eb-8515-8cda7d2e0503" style="width:600px" alt="Real-time Notifications List">
 
 </details>
@@ -149,8 +189,11 @@
 **기대 효과:** 한 번에 하나의 스레드만 특정 콘텐츠의 채팅방 생성 로직에 접근하게 하여 동시성 문제를 해결하고, 요청 처리를 비동기화하여 웹 서버의 부하를 줄입니다.
 
 **관련 이미지:**
-<img width="1210" alt="Worker Class Code Snippet" src="https://github.com/user-attachments/assets/d569a81d-b1e3-43f2-b296-551111229f1d" />
-<img width="1416" alt="Queue Processing Logic" src="https://github.com/user-attachments/assets/507953fb-8d63-4a84-a6ef-5efe3373c2ac" />
+
+<img width="1210" alt="Worker Class Code Snippet" src="https://github.com/user-attachments/assets/d569a81d-b1e3-43f2-b296-551111229f1d">
+
+<img width="1416" alt="Queue Processing Logic" src="https://github.com/user-attachments/assets/507953fb-8d63-4a84-a6ef-5efe3373c2ac">
+
 </details>
 
 <details>
@@ -171,7 +214,9 @@
 **장점:** 서버 인스턴스가 여러 대로 확장(Scale-out)되어도 Redis Pub/Sub을 통해 모든 클라이언트에게 메시지를 안정적으로 전파할 수 있습니다.
 
 **관련 이미지:**
-<img width="1152" alt="Redis Pub/Sub Messaging Flow Diagram" src="https://github.com/user-attachments/assets/74068e47-3d14-404f-bee0-3e8b18454f67" />
+
+<img width="1152" alt="Redis Pub/Sub Messaging Flow Diagram" src="https://github.com/user-attachments/assets/74068e47-3d14-404f-bee0-3e8b18454f67">
+
 </details>
 
 <details>
@@ -199,9 +244,13 @@
 * **관심사 분리:** 실시간 전송(Pub/Sub)과 영구 저장(Stream) 파이프라인을 분리하여 시스템 복잡도를 관리합니다.
 
 **관련 이미지:**
-<img width="1278" alt="Redis Stream Message Processing Flow Diagram" src="https://github.com/user-attachments/assets/2ce8800a-0103-4925-b980-9cef729352e2" />
-<img width="1416" alt="Redis Stream Consumer Code Snippet" src="https://github.com/user-attachments/assets/844591d9-6366-466c-9e32-4ae4db3a5166" />
-<img width="1369" alt="Stream Listener Implementation Snippet" src="https://github.com/user-attachments/assets/75b70d01-740e-44d2-92ad-a8086af1454f" />
+
+<img width="1278" alt="Redis Stream Message Processing Flow Diagram" src="https://github.com/user-attachments/assets/2ce8800a-0103-4925-b980-9cef729352e2">
+
+<img width="1416" alt="Redis Stream Consumer Code Snippet" src="https://github.com/user-attachments/assets/844591d9-6366-466c-9e32-4ae4db3a5166">
+
+<img width="1369" alt="Stream Listener Implementation Snippet" src="https://github.com/user-attachments/assets/75b70d01-740e-44d2-92ad-a8086af1454f">
+
 </details>
 
 <details>
@@ -221,7 +270,9 @@
 **기대 효과:** DB 조회 빈도를 줄여 RDB 부하를 감소시키고, 멤버 목록 조회 응답 속도를 향상시킵니다.
 
 **관련 이미지:**
-<img width="1245" alt="Group Chat Member Caching Flow Diagram" src="https://github.com/user-attachments/assets/9224e9c3-6ddc-4601-ba88-5ba781928a63" />
+
+<img width="1245" alt="Group Chat Member Caching Flow Diagram" src="https://github.com/user-attachments/assets/9224e9c3-6ddc-4601-ba88-5ba781928a63">
+
 </details>
 
 <details>
@@ -230,7 +281,9 @@
 - 멤버 정보 조회 시 RDB 직접 조회는 평균 수십 밀리초(ms)가 소요되었으나, Redis 캐시를 적용한 후 평균 한 자릿수 밀리초로 응답 시간이 단축되어 성능 개선 효과를 확인했습니다.
 
 **관련 이미지:**
-<img width="517" alt="Performance Comparison: DB vs Cache" src="https://github.com/user-attachments/assets/92afb98c-d425-4f75-a63a-bd2c924df450" />
+
+<img width="517" alt="Performance Comparison: DB vs Cache" src="https://github.com/user-attachments/assets/92afb98c-d425-4f75-a63a-bd2c924df450">
+
 </details>
 
 <details>
@@ -247,7 +300,9 @@
 3. Cache Miss 시 RDB에서 조회 후 Redis에 캐싱하고 반환.
 
 **관련 이미지:**
-<img width="1283" alt="1:1 Chat List Caching Flow Diagram" src="https://github.com/user-attachments/assets/57862678-d57d-410b-ba94-8de8d910d513" />
+
+<img width="1283" alt="1:1 Chat List Caching Flow Diagram" src="https://github.com/user-attachments/assets/57862678-d57d-410b-ba94-8de8d910d513">
+
 </details>
 
 <details>
@@ -262,7 +317,9 @@
 3. Redis Pub/Sub을 통해 채팅방 생성 및 새 메시지 도착 이벤트를 발행하여, 관련 클라이언트(본인 및 상대방)의 UI가 업데이트되도록 합니다.
 
 **관련 이미지:**
-<img width="1106" alt="1:1 Chat Cache Update on Creation Flow Diagram" src="https://github.com/user-attachments/assets/0ba0f62c-e8ec-4d0c-bf4b-613c4ba35df0" />
+
+<img width="1106" alt="1:1 Chat Cache Update on Creation Flow Diagram" src="https://github.com/user-attachments/assets/0ba0f62c-e8ec-4d0c-bf4b-613c4ba35df0">
+
 </details>
 
 <details>
@@ -282,7 +339,9 @@
    업데이트합니다.
 
 **관련 이미지:**
-<img width="1154" alt="Real-time Member Info Update and Cache Sync Flow Diagram" src="https://github.com/user-attachments/assets/b15a3b4a-3ef3-41d6-855b-4dd7e36b2c86" />
+
+<img width="1154" alt="Real-time Member Info Update and Cache Sync Flow Diagram" src="https://github.com/user-attachments/assets/b15a3b4a-3ef3-41d6-855b-4dd7e36b2c86">
+
 </details>
 
 <details>
@@ -299,9 +358,13 @@
 4. **캐시 저장 및 전파:** 수정된 전체 멤버 목록을 다시 Redis에 저장(`updateCachedMembers` 함수 예시)하고, 변경 사실을 Pub/Sub을 통해 전파합니다.
 
 **관련 이미지 (코드 스니펫):**
-<img width="1416" alt="Cache Update Event Listener Code" src="https://github.com/user-attachments/assets/1c9f88ae-4be0-4898-99cb-d12959f51093" />
-<img width="1420" alt="Modify Cached Member Logic" src="https://github.com/user-attachments/assets/9f63be9f-2f14-47c8-97ff-460507c42320" />
-<img width="1289" alt="Update Cached Members and Publish Logic" src="https://github.com/user-attachments/assets/488efecd-da65-4d64-8ffd-43d9bd2167bd" />
+
+<img width="1416" alt="Cache Update Event Listener Code" src="https://github.com/user-attachments/assets/1c9f88ae-4be0-4898-99cb-d12959f51093">
+
+<img width="1420" alt="Modify Cached Member Logic" src="https://github.com/user-attachments/assets/9f63be9f-2f14-47c8-97ff-460507c42320">
+
+<img width="1289" alt="Update Cached Members and Publish Logic" src="https://github.com/user-attachments/assets/488efecd-da65-4d64-8ffd-43d9bd2167bd">
+
 </details>
 
 <details>
@@ -328,9 +391,12 @@
 **관련 이미지:**
 
 - **브라우저 알림 예시:**
-  <img width="562" alt="Browser Notification Example" src="https://github.com/user-attachments/assets/8b3dd225-1ffb-44f8-a83a-c0717f56697c" />
+
+  <img width="562" alt="Browser Notification Example" src="https://github.com/user-attachments/assets/8b3dd225-1ffb-44f8-a83a-c0717f56697c">
+
 - **페이지 내 알림 목록 예시:**
-  <img width="460" alt="In-Page Notification List Example" src="https://github.com/user-attachments/assets/f6fda653-4981-4b9e-a4ae-df8331111b3b" />
+
+  <img width="460" alt="In-Page Notification List Example" src="https://github.com/user-attachments/assets/f6fda653-4981-4b9e-a4ae-df8331111b3b">
 
 </details>
 
@@ -354,7 +420,9 @@
 **기대 효과:** 서버 확장성에 관계없이 모든 사용자에게 안정적으로 실시간 SSE 알림을 전달할 수 있습니다.
 
 **관련 이미지:**
-<img width="1055" alt="SSE Notification Broadcast using Redis Pub/Sub Diagram" src="https://github.com/user-attachments/assets/e4e1fecc-992e-4842-801d-c502e7572ef2" />
+
+<img width="1055" alt="SSE Notification Broadcast using Redis Pub/Sub Diagram" src="https://github.com/user-attachments/assets/e4e1fecc-992e-4842-801d-c502e7572ef2">
+
 </details>
 
 ## 🛠️ 기술 스택 (Tech Stack)
